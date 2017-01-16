@@ -1,0 +1,171 @@
+﻿@model MVC.GSWeb.Models.OpenItemNumber
+
+@{
+    ViewBag.Title = "Purchase Ebook";
+}
+
+<div id="subscribe">
+    <h2 class="text-uppercase">Get <b><i>Seven Science Questions</i></b>&nbsp;&nbsp;instantly and <b>SAVE!</b></h2>
+    <table>
+        <tr>
+            <td>
+                <ul>
+                    <li>Only $5.99! Save on production, shipping and handling costs.</li>
+                    <li>Get full access to the book in seconds.</li>
+                    <li>Make fast, secure payment via PayPal with any credit card (no PayPal account needed) or use your PayPal account.</li>
+                    <li>Read on any PC (download PDF format) or eReader (download ePub format)</li>
+                    <li>Enter your email address so that we can record your purchase to assist you with any download issues.</li>
+                </ul>
+            </td>
+        </tr>
+    </table>    So what are you waiting for?  Simply click the below button to make your secure payment. Then you will be immediately sent to our eBook download page.
+    <div>
+        <hr>
+        Yes! I would like to purchase <i><b>Seven Science Questions</b></i> as an e-book.
+        <br>
+        <h4>Terms of Use</h4>
+        <span>
+            GoodScience-BadScience digital products are protected under United States copyright laws. Your purchase entitles you to the
+            personal use of GoodScience-BadScience digital products only. Unathorized copying or distribution
+            of these products in digital or other form without written permission from the author is scrictly prohibited
+            and is punishable under federal law.
+        </span>
+        <br><br><span>I agree to the Terms of Use as stated.&nbsp;&nbsp;</span><input type="checkbox" id="termsCb"><br>
+        <hr>
+        <table>
+            <tr>
+                @*<td>Email Address:&nbsp;&nbsp;&nbsp;@Html.TextBox("tbSupportEmail", "") &nbsp;&nbsp;
+                        <span id="emailErrorMsg" class="field-validation-error" style="display:none"><br>Please enter a valid email address.</span>
+                        <br>[Optional, but required for purchase support.]
+                    </td>*@
+                <td>
+                    <p><input id="ebookPdf" type="submit" style="width:15em" value="Download as PDF" /></p>
+                    <p><input id="ebookEpub" type="submit" style="width:15em" value="Download as e-book" /></p>
+                </td>
+                <td>
+                    <p><img height="60" src="~/Content/Images/PayPal.jpg"></p>
+                </td>
+            </tr>
+        </table>
+        <fieldset>
+            <h4>Add Newsletter Sign-Up?</h4>
+            <p><input type="radio" name="emailType" id="supportOnly" value="supportOnly">Use my email address for support ONLY (do NOT send newsletters)</p>
+            <p><input type="radio" name="emailType" id="supportAndNewsletter" checked="checked" value="supportAndNewsletter">Support my purchase AND send monthly email newsletters </p>
+            <p>[NOTE: Your email address on file with PayPal will be used as a reference for purchase support and to receive our newsletters (if selected)]
+        </fieldset>
+    </div>
+</div>
+
+@*For persistence*@
+    @Html.HiddenFor(m => m.ItemNumber, new { id = "itemNumber" })
+
+
+@*PayPal Submit Forms*@
+<form id="frmBuyEbook" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="akpadgett@wowway.com">
+    <input type="hidden" name="button_subtype" value="products">
+    <input type="hidden" name="no_note" value="1">
+    <input type="hidden" name="no_shipping" value="1">
+    <input type="hidden" name="rm" value="2">
+    <input type="hidden" name="return" value="http://goodscience-badscience.com/Home/DownloadEbook">
+    <input type="hidden" name="cbt" value="Return to GoodScience-BadScience.com to download the e-book">
+    <input type="hidden" name="cancel_return" value="http://GoodScience-BadScience.com">
+    <input type="hidden" name="amount" value="5.99">
+    <input type="hidden" name="bn" value="FromTheAshes_BuyNow_GSBS-PDF_US">
+    <input type="hidden" id="item_name" name="item_name" value="">
+    <input type="hidden" id="item_number" name="item_number" value="">
+    <input type="hidden" id="custom" name="custom" value="">
+    <input type="hidden" name="image_url" value="http://goodscience-badscience.com/Content/Images/PP_GSBS_Logo_150.jpg">
+    <input type="hidden" name="cpp_header_image" value="http://goodscience-badscience.com/Content/Images/PP_GSBS_Header.jpg">
+</form>
+
+@section jqEbook {
+    <script type="text/javascript">
+
+    //fixes conflict between boostrapper and jquery-ui in dialog close button
+    $.fn.bootstrapBtn = $.fn.button.noConflict();
+
+    //valid if blank or matching the regex
+    function isValidEmailAddress(emailAddress) {
+        var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+        return (pattern.test(emailAddress) || emailAddress.length == 0);
+    };
+
+
+    $('[id^=ebook]').click(function (evt) {
+        var btn = $(this).attr('id').replace('ebook', '');
+        var enteredEmail = $("#tbSupportEmail").val()
+
+        if (! $("#termsCb").prop('checked')) {
+            jqConfirm();
+        }
+        else
+        {
+            GotoPayPal(btn);
+        }
+    });
+
+
+        ////Validate the email address if any
+        //if (isValidEmailAddress(enteredEmail)) {
+        //    $("#tbSupportEmail").removeClass('input-validation-error');
+        //    $("#emailErrorMsg").attr('style', 'display:none');
+        //    if (enteredEmail.length > 0) {
+        //        GotoPayPal(btn);
+        //    }
+        //    else {
+        //        jqConfirm(btn, function () {
+        //            GotoPayPal(btn);
+        //        });
+        //    }
+        //}
+        //else {
+        //    $("#tbSupportEmail").attr('class', 'input-validation-error');
+        //    $("#emailErrorMsg").attr('style', 'display:inline');
+        //}
+        
+
+    var termsMsg = 'Please accept the Terms of Use before continuing.';
+    var jqConfirm = function () {
+        var dialogObj = $("<div title='Terms of Use' style='display:none'>" + termsMsg + "</div>");
+        $('body').append(dialogObj);
+        $(dialogObj).dialog({
+            resizable: false,
+            width: 400,
+            modal: true,
+            buttons: {
+                "OK": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    };
+
+    function GotoPayPal(btn) {
+
+        //Set the item_number, supportEmail, custom [newsletterAdd] fields to form
+        $("#item_number").attr("value", '@Model.ItemNumber');
+        //$("#supportEmail").attr("value", $('#tbSupportEmail').val());
+
+        switch (btn) {
+            case "Pdf":
+                $("#item_name").attr("value", "GSBS PDF Format");
+                break;
+
+            case "Epub":
+                $("#item_name").attr("value", "GSBS e-Book Format");
+                break;
+            }
+
+        $('#custom').attr('value', 'supportOnly');
+
+        var myRadio = $('input[name=emailType]');
+        var checkedValue = myRadio.filter(':checked').val();
+        $("#custom").attr('value', checkedValue);
+
+        $("#frmBuyEbook").submit();
+    }
+
+</script>
+}

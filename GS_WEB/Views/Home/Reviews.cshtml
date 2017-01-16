@@ -1,0 +1,30 @@
+﻿@model List<MVC.GSWeb.Models.ReaderReview>
+
+@{
+    ViewBag.Title = "Reader Reviews";
+}
+
+<h2>Reader Reviews</h2>
+
+What people are saying about <i>Seven Science Questions</i>:
+@*<br>[Coming soon!]*@
+<br><table witdh="100%">
+    @foreach (var review in Model)
+    {
+        <tr>
+            <td>
+                <span>@String.Format("{0} from {1}, {2} rated the book at {3} stars (out of 5) and said:  ", review.FirstName, review.City, review.State, review.Rating)</span>
+            </td>
+            <td width="65%">
+                <span>@review.Review</span>
+            </td>
+        </tr>
+    }
+</table>
+
+<br><hr>
+ Create a review of your own.
+<button onclick="window.location.href='@Url.Content("~/Home/AddReview")'">
+    Write a Review
+</button>
+<hr>

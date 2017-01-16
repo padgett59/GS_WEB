@@ -1,0 +1,319 @@
+﻿
+body {
+    width:100%; 
+    height:100%;
+    z-index:1; 
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.7) 0%,rgba(255,255,255,.8) 100%), url(../Content/Images/BeakerBackground_cmp.png) ;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+
+a {
+text-decoration: none;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    /*max-width: 280px;*/
+}
+
+.liBold {
+    font-weight: bold;
+    }
+
+.adText {
+    text-align: center;
+    font-size: 14px;
+    font-family: Arial Black;
+}
+.adTextSmall {
+    text-align: left;
+    font-size: 12px;
+    font-family: Arial Black;
+}
+
+.rounded-img {     
+    border:1px solid #;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+
+/*For large screens*/
+@media screen and (min-width: 1170px) {
+    .headerText {
+        font-size: 45px;
+        font-family: Arial Black;
+        font-style: italic;
+    }
+
+    .subTitle {
+        font-size: 20px;
+        font-family: Arial Black;
+        font-style: italic;
+        }
+
+    h2 {
+        font-weight:bold;
+        font-size:20px;
+    }
+
+    div#left {
+	    float:left;
+	    margin:0; padding:0;
+	    background:url("corner.gif") top right no-repeat;
+        height: 100vh;
+	    }
+
+    div#right {
+        float: right;
+        width: 250px;
+        margin: 0;
+        padding: 0;
+        background: url("corner.gif") top right no-repeat;
+        height: 100vh;
+    }
+
+    .AuthImg {
+        width: 170px;
+
+    }
+
+    td.rightSpace{
+        width: 30%
+    }
+
+}
+
+/*For smaller screens*/
+@media screen and (max-width: 1170px) {
+    .headerText {
+        font-size: 25px;
+        font-family: Arial Black;
+        font-style: italic;
+    }
+
+    .subTitle {
+        font-size: 12px;
+        font-family: Arial Black;
+        font-style: italic;
+        }
+
+    h2 {
+        font-weight:bold;
+        font-size:14px;
+    }
+
+    div#left {
+	    float:left;
+	    margin:0; padding:0;
+	    background:url("corner.gif") top right no-repeat;
+        height: 100vh;
+	    }
+
+    div#right {
+        display: none
+    }
+
+    .AuthImg {
+        width: 85px;
+    }
+
+    td.rightSpace{
+        width: 15%
+    }
+}
+
+/*For phones */
+@media screen and (max-width: 500px) {
+    .headerText {
+        font-size: 15px;
+        font-family: Arial Black;
+        font-style: italic;
+    }
+
+    div#left {
+        /*display: none*/
+        width: 15px;
+    }
+
+    td.rightSpace{
+        width: 2%
+    }
+}
+/*End Media Query*/
+
+    #middle {
+	    margin:0;
+        padding: 15px 15px;
+	    }
+
+	.column-in {
+		margin:0; 
+        padding:0.5em 1em;
+		}
+
+	.divAdColumn {
+		margin-top:20px;
+		margin-left:20px;
+        margin-right:20px;
+        padding:0.5em 1em;
+        border-radius: 20px; 
+        background-color:white;
+		}
+
+    .menuNav{
+        list-style-type:none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .menuLi{
+        float: left;
+        text-decoration: none;
+    }
+
+    .menuAnchor{
+        font-size: 18px;
+        background-color: black;
+        color: white;
+    }
+
+    .menuAnchor:hover {
+        color:yellow;
+        text-decoration: underline;
+        }
+
+    /* styles for validation helpers */
+    .field-validation-error {
+        color: #b94a48;
+        font-weight:bold;
+    }
+
+    .field-validation-valid {
+        display: none;
+    }
+
+    input.input-validation-error {
+        border: 1px solid #b94a48;
+    }
+
+
+    select.input-validation-error {
+        border: 1px solid #b94a48;
+    }
+
+    input[type="checkbox"].input-validation-error {
+        border: 0 none;
+    }
+
+    .validation-summary-errors {
+        color: #b94a48;
+        font-weight:bold;
+    }
+
+    .validation-summary-valid {
+        display: none;
+    }
+
+    td.quizStep {
+        text-align:right;
+        padding: 10px;
+    }
+
+    .inputError {
+        padding: 20px;
+        color: #b94a48;
+        font-weight:bold;
+    }
+
+    .answerError {
+        visibility: hidden;
+    }
+
+    td {
+        padding: 10px;
+    }
+
+    button, input[type="button"], input[type="submit"] {
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        padding: 5px; 
+        background-color: white;   
+    }
+
+    button:hover, input[type="button"]:hover, input[type="submit"]:hover {
+        background: lightgray;   
+    }
+
+
+    hr {
+        height: 2px;
+        color: blue;
+        background-color: blue;
+        border: none;
+    }
+
+    h4 {
+        font-weight:bold;
+        font-size:16px;
+    }
+
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        font-size: 12px;
+        position: absolute;
+        /*background-color: rgba(255,255,255,0.1);*/
+        background-color: lightgray ;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 6px 8px;
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: #f1f1f1}
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .ddImage {
+        background-color: #3e8e41;
+    }
+

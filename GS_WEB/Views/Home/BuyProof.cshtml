@@ -1,0 +1,152 @@
+﻿@model MVC.GSWeb.Models.ProofOrder
+
+@{
+    ViewBag.Title = "Purchase Proof Version";
+}
+
+<div>
+    <h2 class="text-uppercase">Get a pre-published proof version of <b><i>Seven Science Questions</i></b> and <b>SAVE!</b></h2>
+    <table>
+        <tr>
+            <td>
+                <ul>
+                    <li>Only $6.99! plus $1.99 S/H and tax</li>
+                    <li>Same great content as published version. Title, graphics may vary slightly.</li>
+                    <li>You will be invoiced by PayPal</li> 
+                    <li>Pay through your PayPal account or by credit card (no PayPal account required) or </li>
+                    <li>Limited time offer while limited supplies last</li>
+                    <li>Sorry, U.S. only at this time.</li>
+                    <li>Your order will be shipped once payment has been completed.</li>
+                </ul>
+                <p>Invoicing and secure payment via: <img height="60" src="~/Content/Images/PayPal.jpg"></p>
+            </td>
+        </tr>
+    </table>    So what are you waiting for?  Complete the form below, select the quantity and click the button. 
+                Your invoice will be on its way to you via email. <br>
+                <b>Note:</b> Your information will be used for order processing <b>only</b> and will never be shared or sold for any reason.
+    <div>
+        <hr>
+        Yes! I would like to purchase a pre-published version of <i><b>Seven Science Questions</b></i>.
+        <hr>
+        <form id="buyProofForm" method="post">
+            <table style="border-collapse:collapse;">
+                @if (Model.Step == 2)
+                {
+                    <tr>
+                        <td></td>
+                        <td colspan="3">
+                            <span class="field-validation-error"><b>Please double check your entries, then select "Complete Order" below.</b></span>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td align="right"><label for="email">Email Address:</label></td>
+                    <td colspan=3 align="left">
+                        @Html.TextBoxFor(model => model.Email)
+                        @Html.HiddenFor(model => model.Email)
+                        <br>@Html.ValidationMessageFor(model => model.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><label for="firstname">First Name:</label></td>
+                    <td align="left">
+                        @Html.TextBoxFor(model => model.FirstName)
+                        @Html.HiddenFor(model => model.FirstName)
+                        <br>@Html.ValidationMessageFor(model => model.FirstName)
+                    </td>
+                    <td align="right"><label for="lastname">Last Name:</label></td>
+                    <td align="left">
+                        @Html.TextBoxFor(model => model.LastName)
+                        @Html.HiddenFor(model => model.LastName)
+                        <br>@Html.ValidationMessageFor(model => model.LastName)
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><label for="username">Street Address Line 1:</label></td>
+                    <td align="left">
+                        @Html.TextBoxFor(model => model.Address1)
+                        @Html.HiddenFor(model => model.Address1)
+                        <br>@Html.ValidationMessageFor(model => model.Address1)
+                    </td>
+                    <td align="right"><label for="username">Line 2: (Apt. #)</label></td>
+                    <td align="left">
+                        @Html.TextBoxFor(model => model.Address2)
+                        @Html.HiddenFor(model => model.Address2)
+                        <br>@Html.ValidationMessageFor(model => model.Address2)
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><label for="username">City:</label></td>
+                    <td align="left">
+                        @Html.TextBoxFor(model => model.City)
+                        @Html.HiddenFor(model => model.City)
+                        <br>@Html.ValidationMessageFor(model => model.City)
+                    </td>
+                    <td align="left" colspan=3>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="password">State:&nbsp;&nbsp;&nbsp;</label>
+                                    @Html.DropDownListFor(model => model.State, GS_WEB.Models.Extensions.GetStatesList())
+                                    <br>@Html.ValidationMessageFor(model => model.State)
+                                </td>
+                                <td>
+                                    <label for="zip">&nbsp;&nbsp;&nbsp;Zip:&nbsp;&nbsp;&nbsp;</label>
+                                    @Html.TextBoxFor(model => model.Zip)
+                                    @Html.HiddenFor(model => model.Zip)
+                                    <br>@Html.ValidationMessageFor(model => model.Zip)
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><label for="username">Number of Copies:</label></td>
+                    <td colspan=3 align="left">
+                        @Html.DropDownListFor(model => model.Quantity, GS_WEB.Models.Extensions.GetQuantityList())
+                        &nbsp;&nbsp;&nbsp; Would you also like to sign up for the free <b>Faith and Science</b> weekly email newsletter?
+                        &nbsp;@Html.RadioButtonFor(model => model.NewsEnroll, true, new Dictionary<string, object> { { "id", "sendNews" } })
+                        &nbsp;@Html.Label("sendNews", "Yes")
+                        &nbsp;@Html.RadioButtonFor(model => model.NewsEnroll, false, new Dictionary<string, object> { { "id", "noNews" } })
+                        &nbsp;@Html.Label("noNews", "No")
+                </tr>
+                <tr>
+                    <td align="right">
+                        @if (Model.Step == 2)
+                            {
+                                @Html.Label("orderTotal", String.Format("Order Total: ${0:0.00}", Model.Total));
+                                @Html.Raw(@"</td><td colspan='3'>");
+                                <input type='submit' id='ppBookUpdate' style='width:15em' value='Update  Order' />
+                                @Html.Raw("&nbsp;&nbsp;");
+                                <input type='button' id='ppBookComplete' style='width:15em' value='Complete Order' />
+                                @Html.Raw("&nbsp;&nbsp;");
+                                <input id='ppBookCancel' type="button" style='width:15em' value='Cancel Order' onclick="@("window.location.href='" + @Url.Action("BuyBook", "Home") + "'");" />
+                                @Html.Raw("<br>&nbsp;&nbsp;");
+                                @Html.Raw(@"<b>Note:</b> Applicable sales tax (if any) will be added when you receive your invoice.");
+
+                            }
+                            else
+                            {
+                            @Html.Raw(@"</td><td>");
+                            @Html.Raw(@"<input type='submit' id='ppBook' style='width:15em' value='Review Order' />");
+                            }
+                    </td>
+                </tr>
+            </table>
+            @Html.HiddenFor(model => model.Step);
+            @Html.HiddenFor(model => model.Total);
+        </form>
+    </div>
+</div>
+
+
+@section jqBuyProof {
+    <script type="text/javascript">
+
+        $("#ppBookComplete").click(function (evt) {
+            $("#Step").attr("value", "3");
+            $("#buyProofForm").submit();
+        });
+
+</script>
+}

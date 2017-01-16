@@ -1,0 +1,258 @@
+﻿@model MVC.GSWeb.Models.ActiveQuiz
+@{
+    ViewBag.Title = "Take a Quiz";
+}
+
+<h2 class=" text-uppercase">Welcome to Quiz Central</h2>
+
+Think you know your science?  Take a free quiz below and find out now.<br><br>
+
+    @using (Html.BeginForm("TakeQuiz", "Home", FormMethod.Post, new { id = "questionForm" }))
+    {
+        <table>
+            <tr>
+                <td class="quizStep"> Step 1: Select a topic:</td>
+                <td>
+                    @Html.DropDownListFor(model => model.CategoryId, new SelectList(Model.CategoryList, "CategoryId", "Category"),
+                  "Choose a category", new { @onchange = "ResetQuizId(0)", id = "ddlCategory" })
+                </td>
+            </tr>
+            <tr>
+                <td class="quizStep"> Step 2: Select a quiz:</td>
+                @if (Model.CategoryId == 0)
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DropDownListFor(model => model.QuizId, new SelectList(Model.QuizInfoList, "QuizId", "QuizName"),
+                         "Choose a(n) " + Model.CategoryList.Where(c => c.CategoryId == Model.CategoryId).Select(c => c.Category).Single() +
+                         " quiz", new { @onchange = "ResetQuizId(1);" })
+                    </td>
+                }
+            </tr>
+        </table>
+
+        if (Model.CurrentQuestionId >= 0)
+        {
+            byte correctAnswerCount = (byte)(Model.QuestionSet[Model.CurrentQuestionId].AnswerList.Where(a => a.CorrectAnswer).Count());
+            <div>
+                <hr>
+                    <h3>Testing your knowledge... </h3>
+                <hr>
+            </div>
+            <table>
+                @if (correctAnswerCount > 1)
+                {
+                    <tr>
+                        <td colspan="3">Select the best @correctAnswerCount answers:</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2">Select the best answer:</td>
+                    </tr>
+                }
+                <tr style="text-align:left">
+                    <td>
+                        @Html.Raw(@Model.QuestionSet[Model.CurrentQuestionId].Question.Question)
+                        @*@Html.Raw("&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;")*@
+                        @Html.Raw("&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;")
+                    </td>
+                    <td witdh="50%">
+                        <table witdh="100%">
+                            @for (int i = 0; i < Model.QuestionSet[Model.CurrentQuestionId].AnswerList.Count; i++)
+                            {
+                                if (Model.QuestionSet[Model.CurrentQuestionId].AnswerList[i].CorrectAnswer)
+                                {
+                                    @Html.Raw("<tr><td>");
+                                @Html.CheckBoxFor(m => m.QuestionSet[Model.CurrentQuestionId].AnswerList[i].Selected, new { id = "ansCB_ca_" + i })
+                                @Html.Raw("&nbsp;&nbsp;&nbsp;")
+                                <td><span id="correctAns_" + @i>@Html.DisplayFor(m => m.QuestionSet[Model.CurrentQuestionId].AnswerList[i].Answer)</span></td>
+                                @Html.Raw("</tr>");
+                                }
+                                else
+                                {
+                                    @Html.Raw("<tr><td>");
+                                @Html.CheckBoxFor(m => m.QuestionSet[Model.CurrentQuestionId].AnswerList[i].Selected, new { id = "ansCB_" + i })
+                                @Html.Raw("&nbsp;&nbsp;&nbsp;")
+                                <td style="vertical-align:top"><span id="answer_" + @i>@Html.DisplayFor(m => m.QuestionSet[Model.CurrentQuestionId].AnswerList[i].Answer)</span></td>
+                                @Html.Raw("</tr>");
+                                }
+                            }
+                        </table>
+                    </td>
+
+
+                    <td class="answerError">
+                        <p class="inputError" id="errMsg">Please select at least one answer before proceeding.</p>
+                    </td>
+                </tr>
+                <tr style="vertical-align:bottom">
+                    <td />
+                    <td><br><input id="nextQuestion" type="button" value="Continue" /></td>
+                    <td id="scoreTd" style="visibility:hidden"></td>
+                </tr>
+                @*spacer rows for phone display*@
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+            </table>
+
+        }
+
+        //For persistance
+        <input type="hidden" id="resetQuiz" name="resetQuiz" value="false" />
+        @Html.HiddenFor(m => m.QuizId, new { id = "quizId" });
+        @Html.HiddenFor(m => m.CurrentQuestionId, new { id = "currentQuestionId" });
+        @Html.HiddenFor(m => m.QuestionComplete, new { id = "questionComplete" });
+        @Html.HiddenFor(m => m.CorrectAnswers, new { id = "correctAnswers" });
+        @Html.HiddenFor(m => m.AnsweredCorrectly, new { id = "answeredCorrectly" });
+        @Html.HiddenFor(m => m.QuestionCount, new { id = "questionCount" });
+        @Html.HiddenFor(m => m.QuizComplete, new { id = "quizComplete" });
+
+    }
+
+    @section jqTakeQuiz {
+        <script type="text/javascript">
+
+            if (@Model.CategoryId == 0)
+            {
+                $("#ddlCategory")[0].selectedIndex = 0;
+            }
+            //alert('pageload');
+            window.scrollTo(0,document.body.scrollHeight);
+
+            function ResetQuizId(controlId)
+            {
+                var submitForm = true;
+                //Prompt if currently in the middle of a quiz
+                if (quizId.value > 0) {
+                    if (confirm ("Are you sure you want to discard your progress and start a new quiz?")){
+                        document.getElementById("resetQuiz").value = "true";
+                        
+                        //Reset quiz selected?
+                        if (controlId == 0)
+                        {
+                            document.getElementById("QuizId").selectedIndex = 0;
+                        }
+                    }
+                    else {
+                        submitForm = false;
+                    }
+                }
+
+                if (submitForm) {
+                    document.forms["questionForm"].submit();
+                }
+            }
+
+            //continue or nextQuestion clicked
+            $("#nextQuestion").click(function(evt) {
+
+                var correctAnswerCount = $('[id^=correctAns_]').length;
+                var answeredCorrectlyCount = $('[id^=ansCB_ca_]').filter(':checked').length;
+                var newCaTotal = parseInt($("#correctAnswers").attr('value')) + correctAnswerCount;
+                var newAcTotal = parseInt($("#answeredCorrectly").attr('value')) + answeredCorrectlyCount;
+
+                var numberChecked = $('[id^=ansCB_]').filter(':checked').length;
+                $("#scoreTd").css('visibility', 'hidden');
+
+                if ($("#nextQuestion").attr('value') == 'New Quiz')
+                {
+                    window.location.href = '@Url.Content("~/Home/TakeQuiz")';
+                }
+                else
+                {
+                    if ($("#nextQuestion").attr('value') == 'Next Question')
+                    {
+                        $(this).css("cursor", "progress");
+                    }
+                    else
+                    {
+                        $(this).css("cursor", "pointer");
+                    }
+
+                    $("#errMsg").text('Please select at least one answer before proceeding.');
+                    if (numberChecked == 0)
+                    {
+                        //DisplayError
+                        $(".answerError").css("visibility", "visible");
+                    }
+                    else if (numberChecked > correctAnswerCount)
+                    {
+                        //DisplayError
+                        if (correctAnswerCount > 1)
+                        {
+                            $("#errMsg").text('Please select no more than ' + correctAnswerCount + ' answers.');
+                        }
+                        else
+                        {
+                            $("#errMsg").text('Please select only one answer.');
+                        }
+                        $(".answerError").css("visibility", "visible");
+                    }
+                    else
+                    {
+                        $(".answerError").css("visibility", "hidden");
+                        if ($("#nextQuestion").attr('value') == 'Continue') {
+
+                            //Disable check boxes
+                            $('[id^=ansCB_]').prop('disabled', true);
+
+                            //Show right answers
+                            $('[id^=correctAns_]').css('background-color', 'lightgreen');
+
+                            //Give feedback
+                            if(correctAnswerCount == answeredCorrectlyCount)
+                            {
+                                $("#errMsg").text('Nice!');
+                                $(".inputError").css("color", "green");
+                            }
+                            else
+                            {
+                                $("#errMsg").text('Oops!');
+                                $(".inputError").css("color", "red");
+                            }
+
+                            //Quiz Complete?
+                            if(parseInt(@Model.CurrentQuestionId) + 1 != parseInt(@Model.QuestionCount))
+                            {
+                                $("#scoreTd").text('Your score after question ' + (parseInt(@Model.CurrentQuestionId) + 1) + ' of ' + @Model.QuestionCount +
+                                            '  is: ' + Math.floor((newAcTotal/newCaTotal)*100) + '%');
+                                $("#nextQuestion").attr('value', 'Next Question');
+                            }
+                            else
+                            {
+                                $("#scoreTd").html('<b>QUIZ COMPLETE!  Your final score for this quiz is: ' + Math.floor((newAcTotal/newCaTotal)*100) + '% <b>');
+                                //Change button text
+                                $("#nextQuestion").attr('value', 'New Quiz');
+                                //Set Flags
+                                $("#questionComplete").attr('value', "true");
+                                $("#quizComplete").attr('value', 'true');
+                            }
+
+                            $("#scoreTd").css('visibility', 'visible');
+                            $(".answerError").css("visibility", "visible");
+
+                            //For persistance
+                            $("#currentQuestionId").attr('value', @Model.CurrentQuestionId);
+                            $("#questionCount").attr('value', @Model.QuestionCount);
+
+                        }
+                        else {
+                            //Update correctAnswer, answeredCorrectly tallies and set state to Answered and submit the form
+                            var newCaTotal = parseInt($("#correctAnswers").attr('value')) + correctAnswerCount;
+                            var newAcTotal = parseInt($("#answeredCorrectly").attr('value')) + answeredCorrectlyCount;
+                            $("#questionComplete").attr('value', "true");
+                            $("#correctAnswers").attr('value', newCaTotal);
+                            $("#answeredCorrectly").attr('value', newAcTotal);
+                            $('#questionForm').submit();
+                        }
+                    }
+                }
+            });
+
+        </script>
+    }

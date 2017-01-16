@@ -1,0 +1,100 @@
+﻿@model MVC.GSWeb.Models.NewReader
+
+@{
+    ViewBag.Title = "News Letter";
+}
+
+<div id="subsribe">
+    <h2 class="text-uppercase">Have you subscribed to our free email newsletter?</h2>
+    <table><tr><td>
+    <ul>
+        <li>It's free and easy!</li>
+        <li>Receive regular updates on science related topics that will strengthen your faith.</li>
+        <li>Arm yourself with powerful information to influence your friends and those around you.</li>
+        <li>We will not share your information with ANYONE.</li>
+        <li>We will NOT fill your inbox with ads and spam emails.</li>
+        <li>Receive updates and discounts on our product offerings.</li>
+        <li>Unsubscribe at anytime.</li>
+    </ul>
+    </td></tr></table>
+
+    So what are you waiting for?  Simply fill in the boxes below and click the "Add Me" button to get started. You will be glad you did! <br>
+
+    @switch ((byte)ViewData["enrollStatus"])
+    {
+        case Constants.NEW_READER_EXISTS:
+            <div><br><font color='green'>The email address <b>@Model.Email </b>has already been subscribed. </font></div>
+            break;
+            
+        case Constants.NEW_READER_ADDED:
+            <div><br><font color='green'><b>Thank you for subscribing! You will be receiving your first newsletter soon.</b></font></div>
+            break;
+            
+        case Constants.NEW_READER_ADD_ERROR:
+            <div><br><font color='red'>We're sorry, there was problem adding you to our list of newsletter subscribers. Please try again.</font></div>
+            break;
+
+        case Constants.READER_REMOVED:
+            <div><br><font color='green'><b>Sorry to see you go. You have been successfully removed. </b></font></div>
+            break;
+
+        case Constants.REMOVE_NOTFOUND:
+            <div><br><font color='green'><b>Sorry, the email address <b>@Model.Email </b>was not in our data base. Perhaps it has already been removed.</font></div>
+            break;
+
+        default:
+            using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmReader" }))
+            {
+                    <br><hr>
+                    <span>&nbsp;&nbsp;Please send me the <i><b>Seven Critcal Questions</b></i> newsletters.</span>
+                    <hr>
+                    <table>
+                        <tr>
+                            <td style="text-align:right">Name:&nbsp;&nbsp;&nbsp;</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.ReaderName, new { style = "width:250px;" })&nbsp;&nbsp;&nbsp;<br>[First name or First and Last names]
+                                @Html.HiddenFor(model => model.ReaderName)
+                            <br>@Html.ValidationMessageFor(model => model.ReaderName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Email:&nbsp;&nbsp;&nbsp;</td>
+                        <td>
+                            @Html.TextBoxFor(model => model.Email, new { style = "width:250px;" })&nbsp;&nbsp;&nbsp;
+                            @Html.HiddenFor(model => model.Email)
+                        <br>@Html.ValidationMessageFor(model => model.Email)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Add Me">&nbsp;&nbsp;&nbsp;
+                            <input type="button" id="removeReader" value="Unsubscribe">
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" id="mode" name="mode">
+            }
+            break;
+    }
+
+</div>
+
+<br><hr>
+    <h3>&nbsp;&nbsp;Read recent newsletters</h3>
+<hr>
+    [Coming Soon]
+
+@section jqNewsletter {
+    <script type="text/javascript">
+        $('#removeReader').click(function (evt) {
+            $('#mode').attr('value', 'remove');
+            $('#frmReader').submit();
+        });
+    </script>
+}
+
+
+
+
+

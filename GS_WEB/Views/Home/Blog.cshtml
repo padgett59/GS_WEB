@@ -1,0 +1,12 @@
+﻿@using MVC.GSWeb;
+@{
+    ViewBag.Title = "Blog";
+}
+
+<h2>Author's Blog and Reader's Comments</h2>
+
+Please use the link below to access the Author's blog on Facebook:<br><br>
+@Html.Raw(String.Format(@"<a href=""{0}"" target=""_blank""><span>Seven Science Questions Blog</span></a>", @Constants.FACEBOOK))
+
+
+

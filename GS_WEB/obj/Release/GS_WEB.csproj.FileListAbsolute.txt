@@ -1,0 +1,74 @@
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\GS_WEB.dll.config
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\GS_WEB.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\GS_WEB.pdb
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Antlr3.Runtime.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\EntityFramework.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\EntityFramework.SqlServer.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Newtonsoft.Json.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Ninject.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Ninject.Web.Common.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Ninject.Web.Mvc.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Helpers.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Mvc.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Optimization.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Razor.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.WebPages.Deployment.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.WebPages.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.WebPages.Razor.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\WebActivatorEx.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\WebGrease.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\EntityFramework.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\EntityFramework.SqlServer.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Ninject.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Ninject.Web.Common.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Ninject.Web.Mvc.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Helpers.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Mvc.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Optimization.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Razor.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.WebPages.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.WebPages.Deployment.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.WebPages.Razor.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Antlr3.Runtime.pdb
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Newtonsoft.Json.xml
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\obj\Release\GS_WEB.csprojResolveAssemblyReference.cache
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\obj\Release\GS_WEB.dll
+C:\Users\LifeSource Church\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\obj\Release\GS_WEB.pdb
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\GS_WEB.dll.config
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\GS_WEB.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\GS_WEB.pdb
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Antlr3.Runtime.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\EntityFramework.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\EntityFramework.SqlServer.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Newtonsoft.Json.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Ninject.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Ninject.Web.Common.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Ninject.Web.Mvc.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Helpers.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Mvc.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Optimization.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Razor.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.WebPages.Deployment.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.WebPages.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.WebPages.Razor.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\WebActivatorEx.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\WebGrease.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\EntityFramework.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\EntityFramework.SqlServer.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Ninject.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Ninject.Web.Common.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Ninject.Web.Mvc.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Helpers.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Mvc.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Optimization.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.Razor.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.WebPages.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.WebPages.Deployment.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\System.Web.WebPages.Razor.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Antlr3.Runtime.pdb
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\bin\Newtonsoft.Json.xml
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\obj\Release\GS_WEB.csprojResolveAssemblyReference.cache
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\obj\Release\GS_WEB.dll
+C:\Users\apadg\Documents\Anthony\Good Science Bad Science\Website\GS_WEB\GS_WEB\obj\Release\GS_WEB.pdb

@@ -1,0 +1,160 @@
+﻿@functions {
+
+    byte menuSpaces = 3;
+    const string SPACE = "&nbsp;";    
+
+    MvcHtmlString menuSpacer(string menuText)
+    {
+        string spcString = String.Empty;
+        //string retVal = String.Empty;
+        for (int i = 0; i < menuSpaces; i++)
+        {
+            spcString += SPACE;
+        }
+
+        return MvcHtmlString.Create(String.Format("{0}{1}{0}", spcString, menuText));
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script>
+        //Preload Background Image
+        var imgBg = new Image();
+        imgBg.src = "./Content/Images/BeakerBackground_cmp.png";
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/bundles/styles")
+    @Styles.Render("~/Content/themes/base/jqui_css_bundle")
+
+
+    <style type="text/css">
+        .ui-dialog {
+            font-size: 11px;
+        }
+
+        body {
+            font-family: Tahoma; 
+            font-size: 12px;
+        }
+
+        #question {
+            width: 300px !important;
+            height: 60px !important;
+            padding: 10px 0 0 10px;
+        }
+
+            #question img {
+                float: left;
+            }
+
+            #question span {
+                float: left;
+                margin: 20px 0 0 10px;
+            }
+    </style>
+
+</head>
+<body>
+    <div id="left">
+        <div class="column-in">
+            <br><img style="margin:0px auto;visibility:hidden" src="~/Content/Images/Logo_Small.jpg" height="90" />
+        </div>
+    </div>
+
+    <div id="right">
+        <div class="divAdColumn">
+            <div class="adText">
+                <br><i>Pre-Release Special:</i><br>
+                Purchase your pre-release copy of<br><i><b><font color="blue">Seven Science Questions</font></b></i>
+                <br>on-line today for only
+                <br><font color="blue">$6.99</font> + <font color="blue">$1.99</font> S/H<br>
+            </div>
+            <div class="adTextSmall">
+                <ul>
+                    <li>Secure Pay-Pal transaction
+                    <li>No PayPal account needed
+                    <li>You will receive a payment request from Pay-Pal
+                    <li>Use a credit card or Pay-Pal account to pay on-line
+                    <li>Your order will be processed within 48 hours 
+                </ul>
+            </div>
+
+            <a href="@Url.Action("PreviewBook", "Home")">
+                <img style="margin:0px auto;display:none" src="~/Content/Images/FrontCoverOnly.jpg" width="190" /><br></a>
+            <a href="@Url.Action("BuyBook", "Home")">
+                <img style="margin:0px auto;display:block;cursor:pointer" src="~/Content/Images/BuyNow.jpg" width="150" /></a>
+
+            <div class="adText">
+                --- OR --- <br>download now as an
+            </div>
+
+            <a href="@Url.Action("BuyEbook", "Home")">
+                <img style="margin:0px auto;display:block;cursor:pointer" src="~/Content/Images/eBook.jpg" width="150" /></a>
+        </div>
+    </div>
+
+    <div id="middle">
+        <span class="column-in">
+            <span class="headerText">
+                <font color="blue"><b>Seven Science Questions</b></font>
+
+                @*Nav Menus*@
+                &nbsp;&nbsp;&nbsp;
+                <img src="~/Content/Images/home.png" title="To Home Page" width="25" style="cursor:pointer"
+                     onclick="location.href='@Url.Action("Index", "Home")'">
+                <div class="dropdown" style="display:inline-block" on>
+                    <div>
+                        <img src="~/Content/Images/menu.png" width="25" style="cursor:pointer" class="ddImage">
+                        <br><div class="dropdown-content" id="ddContent">
+                            <a href="@Url.Action("Reviews","Home")">Reader Reviews</a>
+                            <a href="@Url.Action("PreviewBook","Home")">Preview the Book</a>
+                            <a href="@Url.Action("TakeQuiz","Home")">Take a Short Quiz</a>
+                            <a href="@Url.Action("NewsLetter","Home")">Join the Newsletter</a>
+                            <a href="@Url.Action("BuyBook","Home")">Buy the Book</a>
+                            <a href="@Url.Action("BuyBook","Home")">Buy the eBook</a>
+                            <a href="@Url.Action("Blog","Home")">Read The Blog</a>
+                            <a href="@Url.Action("About","Home")">About the Author</a>
+                        </div>
+                    </div>
+                </div>
+            </span>
+            <span class="subTitle">
+                <font color="blue"><br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;And Why They Matter</b></font>
+            </span>
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;<i><b>-- The Unexpected Harmony of <font color="red">Faith</font> and <font color="red">Science</font> --</b></i>
+        </span>
+    </div>
+
+        @RenderBody()
+        @Scripts.Render("~/bundles/scripts")
+        @*@Scripts.Render("~/bundles/jqueryval")*@
+        @RenderSection("jqTakeQuiz", required: false)
+        @RenderSection("jqEbook", required: false)
+        @RenderSection("jqNewsletter", required: false)
+        @RenderSection("jqIndex", required: false)
+        @RenderSection("jqPreview", required: false)
+        @RenderSection("jqBuyProof", required: false)
+        @RenderSection("jqAddReview", required: false)
+        
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //set cursor on click
+        $(".menuAnchor").click(function () {
+            $(this).css("cursor", "progress");
+            $("body").css("cursor", "progress");
+        });
+
+    })
+</script>

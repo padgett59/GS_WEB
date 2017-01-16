@@ -1,0 +1,141 @@
+﻿@model MVC.GSWeb.Models.NewReader
+
+@{
+    ViewBag.Title = "Seven Science Questions Home Page";
+}
+
+<table>
+    <tr>
+    <td align="center">
+        <img class="AuthImg rounded-img" src="~/Content/Images/Anthony.jpg"><br>
+            <i>Anthony Padgett <br>Author and Speaker</i>
+</td>
+    <td>
+        Anthony Padgett's new book <font color="blue"><b>Seven Science Questions And Why They Matter</b></font>
+        takes a beneath the surface look at what is being presented to today's students in the name of 'science'. It is a straightforward, easy to comprehend walk-through of today's relevant science questions such as:
+        <br>• Does faith in God really cause brain damage and hinder the advancement of scientific thinking?
+        <br>• Could life really have spontaneously generated from non-life?
+        <br>• How much of Darwinian evolution is based on real science?
+        <br>• Can the Big Bang theory really account for the origin of the universe?
+        <br>• Is man's use of flourocarbons causing the demise of planet earth?
+        <br>• Where did '4.6 billion years' come from, and how old is the earth really?
+        <br>... and many more!
+        <br>Interested in the real story behind the psuedo science being presented in today's classrooms and the media?  Then this book is for you!
+        <br><br>
+        Parents, this book is a <b>MUST READ</b> for students entering high school or college. The information presented will ensure that your student
+        is not de-converted in their Biology class and it will give them a solid foundation so that they can not only resist pseudo-science based 
+        attacks on their worldview, but also enable them go on the offensive helping others to understand that embracing faith is a solid, 
+        intellectually sound position that does NOT mean rejecting sound science.  Almost without exception, every parent that I have shared 
+        the details of Seven Science Questions with wants their children to read this book and has asked how they can obtain a copy.
+    </td>
+    <td class="rightSpace"></td>
+    </tr>
+</table>
+<br>
+<table>
+    <tr>
+        <td style="white-space:nowrap">
+            <b>Did you know?</b>&nbsp;<img style="cursor:pointer" id="dyk" src="~/Content/Images/plus.png" height="15" title="more" />
+        </td>
+        </tr>
+    <tr>
+        <td>
+            <div id="dykDiv" style="display:none">
+                <ul>
+                    <li>
+                        Soft tissues such as blood vessels and genetic material cannot survive in exposed fossils for longer than
+                        10,000 years, yet they have been found intact in dinosaur and wooly mammoth fossils?
+                    </li>
+                    <li>
+                         Roughly 73% of the salt entering the earth's oceans remains in the oceans? Ocean salinity slowly increases
+                        time yet it salinity levels have still remained below levels that would destroy all marine life.  This strongly
+                        indicates young oceans that cannot be more than several thousand years old!
+                    </li>
+                    <li>
+                        The earth would cool from molten rock to its current temperature in less than 30,000 years? If the solar system was
+                        more than about 100,000 years old, all planets and moons in our solar system should have lost all their heat and
+                        become cold and dead, yet today they still have very hot cores and are alive with geologic activity. This is strong
+                        evidence for a much younger solar system.
+                    </li>
+                    <li>
+                        Throughout modern history the earth's surface temparature has been known to fluctuate in cyclical fashion.  Throughout
+                        history there has been as much concern about global cooling (and the dawn of a new ice age) as there has been about global
+                        warming?
+                    </li>
+                    <li>
+                        There is no such thing as a 'simple' cell? The smallest element of the simplest cells has been found to far
+                        excel in every sense any innovation produced by the intelligence of man?
+                    </li>
+                    <li>
+                        The information storage capacity of DNA is staggering? DNA stores quantities of coded information equaling
+                        one million 4 Terabyte hard drives in a space smaller that the head of a pin (yes, you read that right)!
+                    </li>
+                    <li>
+                        All life forms are driven by extremely complex information storage and processing systems? Yet no information system
+                        has ever formed by random chance without an intelligent programmer, nor is it possible that even the simplest
+                        information system ever could!
+                    </li>
+                </ul>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" value="Preview Book" onclick="location.href='@Url.Action("PreviewBook", "Home")'" />
+            </div>
+        </td>
+        <td width="5%"></td>
+    </tr>
+</table>
+
+<table><tr><td>
+    <h2 class="text-uppercase">Have you subscribed to our free email newsletter?</h2>
+    <ul>
+        <li>It's free and easy!</li>
+        <li>Receive regular updates on science related topics that will strengthen your faith.</li>
+        <li>Arm yourself with powerful information to influence your friends.</li>
+        <li>Unsubscribe at anytime.</li>
+    </ul>
+    Sign up today!
+    <input type="button" value="Subscribe" onclick="location.href='@Url.Action("Newsletter", "Home")'" />
+    </td></tr>
+    <tr><td>
+        <h2 class="text-uppercase">Think you know your stuff?</h2>
+            Try a short quiz or two just for fun, and find out how well you know real science...<br><br>
+            OK, I'm game. Try me!&nbsp;&nbsp;
+            <input type="button" value="Start A Quiz" onclick="location.href='@Url.Action("TakeQuiz", "Home")'" />
+    </td></tr>
+</table>
+
+
+@section jqIndex {
+    <script type="text/javascript">
+
+        $('#dyk').click(function () {
+            if($('#dykDiv').css('display') == "none") {
+                $('#dykDiv').css('display', 'block');
+                $('#dyk').attr('title', 'less');
+                $('#dyk').attr('src', '../Content/Images/minus.png');
+            }
+            else {
+                $('#dykDiv').css('display', 'none');
+                $('#dyk').attr('title', 'more');
+                $('#dyk').attr('src', '../Content/Images/plus.png');
+            }
+        });
+
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

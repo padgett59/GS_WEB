@@ -1,0 +1,132 @@
+﻿@functions {
+
+    byte menuSpaces = 3;
+    const string SPACE = "&nbsp;";    
+
+    MvcHtmlString menuSpacer(string menuText)
+    {
+        string spcString = String.Empty;
+        //string retVal = String.Empty;
+        for (int i = 0; i < menuSpaces; i++)
+        {
+            spcString += SPACE;
+        }
+
+        return MvcHtmlString.Create(String.Format("{0}{1}{0}", spcString, menuText));
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/styles")
+
+
+    <style type="text/css">
+        .ui-dialog {
+            font-size: 11px;
+        }
+
+        body {
+            font-family: Tahoma; 
+            font-size: 12px;
+        }
+
+        #question {
+            width: 300px !important;
+            height: 60px !important;
+            padding: 10px 0 0 10px;
+        }
+
+            #question img {
+                float: left;
+            }
+
+            #question span {
+                float: left;
+                margin: 20px 0 0 10px;
+            }
+    </style>
+
+</head>
+<body>
+    <div id="left">
+        <div class="column-in">
+            <br><img style="margin:0px auto;display:block" src="~/Content/Images/Logo_Small.jpg" height="90" />
+        </div>
+    </div>
+
+    <div id="right">
+        <div class="divAdColumn">
+            <div class="adText">
+                <br><i>Pre-Release Special!</i><br>
+                Purchase your pre-release copy of<br><i><b><font color="blue">Good Science</font> <font color="red">Bad Science</font></b></i>
+                <br>on-line today for only
+                <br><font color="blue">$9.99</font> + <font color="blue">$1.99</font> S/H<br>
+            </div>
+            <div class="adTextSmall">
+                <ul>
+                    <li>Secure Pay-Pal transaction
+                    <li>No PayPal account needed
+                    <li>Simply enter your email address below
+                    <li>You will receive a payment request from Pay-Pal
+                    <li>Use a credit card or Pay-Pal account
+                    <li>Your order will be processed same day
+                </ul>
+            </div>
+
+            <a href="@Url.Action("PreviewBook", "Home")">
+                <img style="margin:0px auto;display:block" src="~/Content/Images/Book Cover-03.jpg" width="190" /><br></a>
+            <a href="@Url.Action("BuyBook", "Home")">
+                <img style="margin:0px auto;display:block;cursor:pointer" src="~/Content/Images/BuyNow.jpg" width="150" /></a>
+
+            <div class="adText">
+                --- OR --- <br>download now as an
+            </div>
+
+            <a href="@Url.Action("BuyEbook", "Home")">
+                <img style="margin:0px auto;display:block;cursor:pointer" src="~/Content/Images/eBook.jpg" width="150" /></a>
+        </div>
+    </div>
+
+    <div id="middle">
+        <div class="column-in">
+            <span class="headerText"><font color="blue"><b>GOOD Science</b></font><b>&nbsp;-&nbsp;</b><font color="red"><b>BAD</b> Science</font></span><br>
+            <span class="subTitle"><font color="black">Drawing the Lines Between the Science and the Fiction</span><br>
+            <br><ul class="menuNav">
+                <li class="menuLi"><a class="menuAnchor" href="@Url.Action("Index","Home")">@menuSpacer("home")</a></li>
+                <li class="menuLi"><a class="menuAnchor" href="@Url.Action("PreviewBook","Home")">@menuSpacer("book preview")</a></li>
+                <li class="menuLi"><a class="menuAnchor" href="@Url.Action("BuyEbook","Home")">@menuSpacer("ebook")</a></li>
+                <li class="menuLi"><a class="menuAnchor" href="@Url.Action("TakeQuiz","Home")">@menuSpacer("take a quiz")</a></li>
+                <li class="menuLi"><a class="menuAnchor" href="@Url.Action("NewsLetter","Home")">@menuSpacer("newsletter")</a></li>
+                <li class="menuLi"><a class="menuAnchor" href="@Url.Action("MoreResources","Home")">@menuSpacer("more resources")</a></li>
+                <li class="menuLi"><a class="menuAnchor" href="@Url.Action("Blog","Home")">@menuSpacer("blog")</a></li>
+                <li class="menuLi"><a class="menuAnchor" href="@Url.Action("About","Home")">@menuSpacer("about")</a></li>
+            </ul>
+            @RenderBody()
+        </div>
+
+        @Scripts.Render("~/bundles/scripts")
+        @RenderSection("scripts", required: false)
+        @RenderSection("jqTakeQuiz", required: false)
+        @RenderSection("jqEbook", required: false)
+        
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //set cursor on click
+        $(".menuAnchor").click(function () {
+            $(this).css("cursor", "progress");
+            $("body").css("cursor", "progress");
+        });
+
+    })
+</script>
